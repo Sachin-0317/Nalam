@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nalam – Your health, in your voice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF5F2;--ink:#0B2523;--mut:#46605D;--card:rgba(255,255,255,.76);--line:rgba(11,37,35,.14);--pri:#0B7A70;--pri-ink:#fff;--acc:#F4A43A;--g:#1E8A4C;--a:#B26A00;--r:#C0392B;--bw:1px;--sh:0 1px 0 rgba(255,255,255,.9) inset,0 28px 50px -26px rgba(7,60,56,.4),0 4px 14px -6px rgba(7,60,56,.14);
+--fd:"Bricolage Grotesque","Noto Sans Tamil","Noto Sans Devanagari",system-ui,sans-serif;--fb:"Atkinson Hyperlegible","Noto Sans Tamil","Noto Sans Devanagari",system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071B1A;--ink:#E8F5F2;--mut:#9DBDB8;--card:rgba(14,44,42,.7);--line:rgba(180,240,230,.18);--pri:#4FD1C0;--pri-ink:#04211F;--g:#5BE08F;--a:#F6B73C;--r:#FF8A7A;--sh:0 1px 0 rgba(255,255,255,.06) inset,0 28px 50px -26px rgba(0,0,0,.7)}}
+:root[data-theme="dark"]{--bg:#071B1A;--ink:#E8F5F2;--mut:#9DBDB8;--card:rgba(14,44,42,.7);--line:rgba(180,240,230,.18);--pri:#4FD1C0;--pri-ink:#04211F;--g:#5BE08F;--a:#F6B73C;--r:#FF8A7A}
+:root.hc{--bg:#000;--ink:#fff;--mut:#fff;--card:#000;--line:#fff;--pri:#FFE600;--pri-ink:#000;--g:#4ADE80;--a:#FFE600;--r:#FF6B6B;--bw:2px;--sh:none}
+html{font-size:18px;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;height:100%}
+html.lg{font-size:21px}html.rm{scroll-behavior:auto}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:linear-gradient(180deg,color-mix(in srgb,var(--pri) 10%,var(--bg)),var(--bg) 60%);color:var(--ink);font-family:var(--fb);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--fd);margin:0 0 .45em;letter-spacing:-.025em}
+h1{font-size:clamp(2.8rem,6.6vw,5.4rem);font-weight:800;line-height:.98;letter-spacing:-.035em;margin-bottom:.35em}
+h2{font-size:clamp(1.9rem,3.8vw,2.7rem);font-weight:800;line-height:1.08}
+h3{font-size:1.15rem;font-weight:600;margin-bottom:.15em}
+p{margin:0 0 1em;max-width:54ch}
+.lead{font-size:1.15rem;color:var(--mut)}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+header{position:fixed;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:calc(.8rem + env(safe-area-inset-top,0px)) 1.4rem .8rem}
+.logo{display:flex;align-items:center;gap:.55rem;font:800 1.5rem var(--fd);color:var(--ink);text-decoration:none;letter-spacing:-.03em}
+.logo svg{width:34px;height:34px}
+.links{display:flex;gap:.3rem;padding:.3rem;border-radius:999px;background:var(--card);border:var(--bw) solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.links a{padding:.45rem 1rem;border-radius:999px;color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem}
+.links a:hover{background:color-mix(in srgb,var(--pri) 14%,transparent)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.pill{min-height:44px;padding:.45rem 1.05rem;border-radius:999px;border:var(--bw) solid var(--line);background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-weight:700;font-size:.92rem}
+.pill[aria-pressed=true]{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
+main{position:relative;z-index:1}
+section{min-height:100vh;display:flex;align-items:center;padding:6.5rem 1.4rem 7.5rem}
+.wrap{width:100%;max-width:1160px;margin:0 auto}
+.panel{width:min(100%,540px);background:var(--card);border:var(--bw) solid var(--line);border-radius:30px;padding:2rem;backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);box-shadow:var(--sh);will-change:transform}
+.r{margin-left:auto}
+#hero .panel{background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;width:min(100%,620px)}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem;margin:1.6rem 0 1.4rem}
+.cta{display:inline-flex;align-items:center;gap:.9rem;min-height:68px;padding:.6rem 1.7rem .6rem .65rem;border:0;border-radius:999px;background:var(--pri);color:var(--pri-ink);font-weight:700;font-size:1.05rem;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 18px 30px -14px var(--pri);transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-2px)}.cta:active{transform:translateY(2px)}
+.cta i{width:52px;height:52px;border-radius:50%;background:var(--pri-ink);color:var(--pri);display:grid;place-items:center}
+.ghost{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.3em;text-decoration-color:var(--acc)}
+.trust{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;color:var(--mut);font-size:.95rem}
+.trust li::before{content:"✓";color:var(--g);font-weight:800;margin-right:.45rem}
+.seg{display:inline-flex;gap:.25rem;padding:.25rem;border-radius:999px;background:color-mix(in srgb,var(--ink) 7%,transparent);margin-bottom:1.2rem}
+.seg .pill{border:0;background:none;backdrop-filter:none}
+.seg .pill[aria-pressed=true]{background:var(--pri);box-shadow:0 6px 14px -6px var(--pri)}
+.big{width:104px;height:104px;border-radius:50%;border:0;margin:.2rem auto .6rem;display:grid;place-items:center;background:radial-gradient(circle at 32% 26%,color-mix(in srgb,var(--pri) 55%,#fff),var(--pri) 62%);color:var(--pri-ink);box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 22px 34px -14px var(--pri);position:relative}
+.big svg{width:40px;height:40px}
+.big.on::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:3px solid var(--acc);animation:ring 1.1s infinite}
+html.rm .big.on::after{animation:none}
+@keyframes ring{from{transform:scale(.92);opacity:1}to{transform:scale(1.4);opacity:0}}
+.ask{text-align:center;font-weight:700;margin:0 auto .2rem;max-width:30ch}
+.status{text-align:center;color:var(--pri);font-weight:700;min-height:1.6em}
+.row{display:flex;gap:.5rem}
+input{flex:1;min-width:0;min-height:54px;padding:.6rem 1.1rem;border-radius:16px;border:var(--bw) solid var(--line);background:color-mix(in srgb,var(--bg) 70%,transparent);color:var(--ink);font:inherit}
+input::placeholder{color:var(--mut)}
+.go{min-height:54px;padding:0 1.3rem;border-radius:16px;border:0;background:var(--ink);color:var(--bg);font-weight:700}
+#res{margin-top:1.3rem;padding-top:1.3rem;border-top:var(--bw) solid var(--line);display:flex;gap:1.2rem;align-items:center}
+#res[hidden]{display:none}
+.light{flex:none;width:62px;padding:9px;border-radius:22px;background:#10201f;display:grid;gap:8px;box-shadow:0 14px 24px -12px rgba(0,0,0,.5)}
+.lamp{width:44px;height:44px;border-radius:50%;background:#26393a;transition:.4s}
+.lamp.on.r{background:radial-gradient(circle at 35% 30%,#fecaca,#dc2626 60%);box-shadow:0 0 26px #dc2626}
+.lamp.on.a{background:radial-gradient(circle at 35% 30%,#fde68a,#f59e0b 60%);box-shadow:0 0 26px #f59e0b}
+.lamp.on.g{background:radial-gradient(circle at 35% 30%,#bbf7d0,#16a34a 60%);box-shadow:0 0 26px #16a34a}
+#rs{margin:.3rem 0 .8rem;padding-left:1.1rem}#rs li{margin-bottom:.2rem}
+.fine{color:var(--mut);font-size:.85rem}
+.modes{display:grid;gap:.7rem}
+.mode{display:grid;grid-template-columns:56px 1fr;gap:1rem;align-items:center;text-align:left;padding:.8rem 1rem;border-radius:20px;border:var(--bw) solid var(--line);background:color-mix(in srgb,var(--bg) 55%,transparent);transition:transform .2s,box-shadow .2s}
+.mode:hover{transform:translateX(4px)}
+.mode[aria-pressed=true]{border-color:var(--pri);box-shadow:0 0 0 2px var(--pri)}
+.mode p{margin:0;color:var(--mut);font-size:.92rem}
+.aa{display:grid;place-items:center;width:56px;height:56px;border-radius:16px;font:800 1.35rem var(--fd);background:var(--pri);color:var(--pri-ink)}
+.aa.k2{background:#000;color:#FFE600;font-size:1.7rem}.aa.k3{background:var(--acc);color:#2a1a00}
+html.simple .extra{display:none}
+.chart{width:100%;height:auto;margin:.6rem 0}
+.dot{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.45em;background:var(--c)}
+footer{position:relative;z-index:1;text-align:center;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:7rem 1.4rem 7rem}
+footer h2{font-size:clamp(2.2rem,5vw,3.6rem)}footer p{margin-inline:auto}
+#cap{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:4;width:max-content;max-width:min(92vw,660px);padding:.65rem 1.2rem;border-radius:999px;background:var(--card);border:var(--bw) solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);text-align:center;font-size:.95rem;font-weight:700;box-shadow:var(--sh)}
+#cap b{color:var(--pri);margin-right:.5rem}
+#rail{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:4;display:grid;gap:.9rem}
+#rail button{width:12px;height:12px;border-radius:50%;border:2px solid var(--pri);background:none;padding:0;transition:.25s}
+#rail button[aria-current=true]{background:var(--pri);transform:scale(1.5)}
+@media (max-width:900px){.links{display:none}}
+@media (max-width:820px){section{padding-top:5.5rem}.r{margin-left:0}#hero{align-items:flex-end}#hero .panel{padding-bottom:1.5rem}#rail{display:none}.panel{padding:1.5rem}}
+html.rm *{transition:none!important}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="cap" aria-live="polite"></div>
+<nav id="rail" aria-label="Story chapters"><button title="Feeling unwell" aria-label="Chapter 1"></button><button title="Speaking up" aria-label="Chapter 2"></button><button title="Adapting" aria-label="Chapter 3"></button><button title="Family" aria-label="Chapter 4"></button><button title="Relief" aria-label="Chapter 5"></button></nav>
+<header>
+  <a class="logo" href="#hero" aria-label="Nalam home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="var(--pri)"/><rect x="12.5" y="6.5" width="7" height="12" rx="3.5" fill="var(--pri-ink)"/><path d="M8.5 15a7.5 7.5 0 0 0 15 0M16 22.5v3.5" stroke="var(--pri-ink)" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="24" cy="8" r="2.6" fill="var(--acc)"/></svg>Nalam</a>
+  <nav class="links" aria-label="Main"><a href="#try">Try Nalam</a><a href="#modes">Accessibility</a><a href="#care">Family</a></nav>
+  <button class="pill" id="rmBtn" aria-pressed="false">Reduce motion</button>
+</header>
+<main>
+<section id="hero"><div class="wrap"><div class="panel">
+  <h1>Your health,<br>in your voice.</h1>
+  <p class="lead">Nalam is a voice-first health companion for people who find apps hard to use. Speak in Tamil, Hindi or English and get a clear answer, read aloud.</p>
+  <div class="acts"><button class="cta" id="heroMic"><i><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></i>Tap and tell me how you feel</button><a class="ghost" href="#modes">See how it adapts</a></div>
+  <ul class="trust"><li>No sign-up needed</li><li>Answers read aloud</li><li>Large text built in</li></ul>
+</div></div></section>
+
+<section id="try"><div class="wrap"><div class="panel r tilt">
+  <h2>Say it the way you’d tell a neighbour.</h2>
+  <p class="extra" style="color:var(--mut)">Tap the microphone or type. Nalam checks how serious it sounds and tells you what to do next.</p>
+  <div class="seg" role="group" aria-label="Language">
+    <button class="pill" data-l="en" aria-pressed="true">English</button>
+    <button class="pill" data-l="ta" aria-pressed="false">தமிழ்</button>
+    <button class="pill" data-l="hi" aria-pressed="false">हिन्दी</button>
+  </div>
+  <button class="big" id="mic" aria-label="Speak"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+  <p class="ask" id="ask">Tap and tell me how you feel</p>
+  <div class="status" id="st" aria-live="polite"></div>
+  <div class="row"><input id="txt" aria-label="Describe how you feel"><button class="go" id="go">Check</button></div>
+  <p class="fine" id="note" aria-live="polite" style="margin:.6rem 0 0"></p>
+  <div id="res" hidden>
+    <div class="light" aria-hidden="true"><div class="lamp r"></div><div class="lamp a"></div><div class="lamp g"></div></div>
+    <div><h3 id="rt"></h3><ul id="rs"></ul><button class="pill" id="ls">Listen</button></div>
+  </div>
+  <p class="fine" style="margin:1.1rem 0 0">Nalam offers guidance, not a diagnosis. In an emergency, call 108.</p>
+</div></div></section>
+
+<section id="modes"><div class="wrap"><div class="panel tilt">
+  <h2>Comfortable for every pair of eyes.</h2>
+  <p class="extra" style="color:var(--mut)">Choose how Nalam looks. The whole page, and the tablet in the scene, changes at once.</p>
+  <div class="modes">
+    <button class="mode" data-m="std" aria-pressed="true"><span class="aa">Aa</span><span><h3>Standard</h3><p>Balanced size and colour.</p></span></button>
+    <button class="mode" data-m="lg" aria-pressed="false"><span class="aa k2">Aa</span><span><h3>Large text, high contrast</h3><p>Bigger letters in black and yellow.</p></span></button>
+    <button class="mode" data-m="simple" aria-pressed="false"><span class="aa k3">1</span><span><h3>Simple</h3><p>Fewer words, one thing at a time.</p></span></button>
+  </div>
+</div></div></section>
+
+<section id="care"><div class="wrap"><div class="panel r tilt">
+  <h2>Family stays close, even from far away.</h2>
+  <p class="extra" style="color:var(--mut)">With her permission, relatives see each check-in as a simple colour, so nobody has to guess.</p>
+  <div class="seg" id="fam" role="group" aria-label="Family members"></div>
+  <svg class="chart" id="chart" viewBox="0 0 300 130" role="img" aria-label="Seven day check-in trend"></svg>
+  <p class="fine" id="famNote" style="margin:0"></p>
+</div></div></section>
+</main>
+<footer><h2>Nalam means wellbeing.</h2><p class="lead">Made for the people most health apps forget, and the families who worry about them.</p><p class="fine">Nalam offers guidance, not a medical diagnosis. Built for HyperBloom Hacks.</p></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],H=document.documentElement;
+let reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function setRM(v){reduce=v;H.classList.toggle('rm',v);$('#rmBtn').setAttribute('aria-pressed',v)}
+setRM(reduce);$('#rmBtn').onclick=()=>setRM(!reduce);
+
+/* ---------- language + check-in logic ---------- */
+const L={
+en:{code:'en-IN',ask:'Tap and tell me how you feel',ph:'Or type: I have a fever and a headache',go:'Check',ls:'Listen',on:'Listening…',nov:'Voice isn’t available here. Please type instead.',
+r:[['Looks mild','Rest and drink water.','Check in again tomorrow.'],['See a doctor soon','Visit a clinic or doctor today or tomorrow.','Tell a family member how you feel.'],['Get help now','Call 108 for an ambulance.','Do not stay alone. Call a family member.']]},
+ta:{code:'ta-IN',ask:'தட்டி, உங்களுக்கு எப்படி இருக்கிறது என்று சொல்லுங்கள்',ph:'அல்லது எழுதுங்கள்: எனக்கு காய்ச்சல்',go:'சரிபார்',ls:'கேளுங்கள்',on:'கேட்கிறேன்…',nov:'இங்கே குரல் வசதி இல்லை. தயவுசெய்து எழுதுங்கள்.',
+r:[['லேசானதாகத் தெரிகிறது','ஓய்வெடுத்து தண்ணீர் குடியுங்கள்.','நாளை மீண்டும் பரிசோதித்துப் பாருங்கள்.'],['விரைவில் மருத்துவரைப் பாருங்கள்','இன்று அல்லது நாளை மருத்துவமனைக்குச் செல்லுங்கள்.','உங்கள் உடல்நிலையை குடும்பத்தினரிடம் சொல்லுங்கள்.'],['உடனே உதவி பெறுங்கள்','108 ஆம்புலன்ஸை அழையுங்கள்.','தனியாக இருக்க வேண்டாம்; குடும்பத்தினரை அழையுங்கள்.']]},
+hi:{code:'hi-IN',ask:'टैप करें और बताएं कि आप कैसा महसूस कर रहे हैं',ph:'या लिखें: मुझे बुखार है',go:'जांचें',ls:'सुनें',on:'सुन रहा हूं…',nov:'यहां आवाज़ की सुविधा उपलब्ध नहीं है। कृपया लिखें।',
+r:[['हल्की समस्या लगती है','आराम करें और पानी पिएं।','कल फिर से जांच करें।'],['जल्द डॉक्टर को दिखाएं','आज या कल क्लिनिक या डॉक्टर के पास जाएं।','अपने परिवार के किसी सदस्य को बताएं।'],['अभी मदद लें','108 पर एम्बुलेंस बुलाएं।','अकेले न रहें; परिवार को फोन करें।']]}};
+const RED=/chest pain|breath|faint|unconscious|stroke|bleeding|நெஞ்சு வலி|மூச்சு|மயக்கம்|सीने|सांस|बेहोश/i;
+const AMB=/fever|dizz|vomit|headache|cough|pain|ache|காய்ச்சல்|தலை|வாந்தி|இருமல்|வலி|बुखार|चक्कर|उल्टी|सिरदर्द|खांसी|दर्द/i;
+let lang='en',listening=false,speech='',rec;
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const tint=new (window.THREE?THREE.Color:Object)(0x0f766e);
+function applyLang(){const l=L[lang];$('#try').lang=lang;$('#ask').textContent=l.ask;$('#txt').placeholder=l.ph;$('#go').textContent=l.go;$('#ls').textContent=l.ls;
+$$('[data-l]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang))}
+$$('[data-l]').forEach(b=>b.onclick=()=>{lang=b.dataset.l;applyLang();$('#res').hidden=true});applyLang();
+function setUI(){$('#mic').classList.toggle('on',listening);$('#st').textContent=listening?L[lang].on:''}
+function mic(){if(!SR){$('#note').textContent=L[lang].nov;$('#txt').focus();return}
+if(listening){rec.stop();return}
+rec=new SR();rec.lang=L[lang].code;rec.interimResults=true;
+rec.onstart=()=>{listening=true;setUI()};rec.onend=()=>{listening=false;setUI()};
+rec.onerror=()=>{$('#note').textContent=L[lang].nov};
+rec.onresult=e=>{const s=[...e.results].map(r=>r[0].transcript).join(' ');$('#txt').value=s;if(e.results[e.results.length-1].isFinal)run(s)};
+$('#note').textContent='';rec.start()}
+function run(t){t=t.trim();if(!t)return;show(RED.test(t)?2:AMB.test(t)?1:0)}
+function show(lv){const r=L[lang].r[lv];$('#res').hidden=false;$$('.lamp').forEach((x,i)=>x.classList.toggle('on',i===2-lv));
+$('#rt').textContent=r[0];$('#rs').innerHTML=r.slice(1).map(s=>'<li>'+s+'</li>').join('');speech=r.join('. ');
+if(window.THREE){tint.setHex([0x16a34a,0xf59e0b,0xdc2626][lv]);setTimeout(()=>tint.setHex(0x0f766e),4500)}}
+$('#mic').onclick=mic;$('#go').onclick=()=>run($('#txt').value);
+$('#txt').onkeydown=e=>{if(e.key==='Enter')run(e.target.value)};
+$('#ls').onclick=()=>{if(!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(speech);u.lang=L[lang].code;speechSynthesis.speak(u)};
+$('#heroMic').onclick=()=>{$('#try').scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(mic,reduce?50:800)};
+
+/* ---------- accessibility modes ---------- */
+$$('.mode').forEach(b=>b.onclick=()=>{const m=b.dataset.m;
+H.classList.toggle('lg',m==='lg');H.classList.toggle('hc',m==='lg');H.classList.toggle('simple',m==='simple');
+$$('.mode').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+
+/* ---------- caregiver view ---------- */
+const FAM={Amma:[0,0,1,0,0,1,0],Appa:[1,1,0,1,2,1,1],Paati:[0,0,0,0,0,0,0]},DAYS='MTWTFSS',COL=['var(--g)','var(--a)','var(--r)'],WORD=['mild','see a doctor','urgent'];
+function fam(n){$$('#fam button').forEach(b=>b.setAttribute('aria-pressed',b.textContent===n));
+const v=FAM[n],pts=v.map((x,i)=>[30+i*40,105-x*38]);
+$('#chart').innerHTML='<line x1="10" x2="290" y1="105" y2="105" stroke="var(--line)"/><polyline fill="none" stroke="var(--pri)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="'+pts.map(p=>p.join(',')).join(' ')+'"/>'
++pts.map((p,i)=>'<circle cx="'+p[0]+'" cy="'+p[1]+'" r="7" fill="'+COL[v[i]]+'" stroke="var(--bg)" stroke-width="2"/><text x="'+p[0]+'" y="125" text-anchor="middle" font-size="11" fill="var(--mut)">'+DAYS[i]+'</text>').join('');
+$('#famNote').innerHTML='<span class="dot" style="--c:'+COL[v[6]]+'"></span>Last check-in: '+WORD[v[6]]+'.'+(Math.max(...v)===2?' One urgent check-in this week.':'')}
+Object.keys(FAM).forEach(n=>{const b=document.createElement('button');b.className='pill';b.textContent=n;b.onclick=()=>fam(n);$('#fam').appendChild(b)});fam('Amma');
+
+/* ---------- 3D storyboard scene ---------- */
+let R,S,C,dl,orb,orbMat,ST=[],CG=[],A={};
+const secs=$$('main section,footer'),mouse={x:0,y:0},CAP=['Paati feels dizzy. Typing on a phone is hard for her.','She just speaks. Nalam listens in her own language.','The screen adapts to her eyes: bigger text, stronger contrast.','Her daughter Meena, far away, sees the check-in at once.','Help comes in time. The whole family can breathe.'];
+const OP=[[1.7,-1.3,.9],[1.7,-.4,.4],[0,2.0,.6],[0,2.4,.4],[0,2.6,0]],OS=[.38,.58,.34,.4,.42];
+addEventListener('pointermove',e=>{mouse.x=e.clientX/innerWidth-.5;mouse.y=e.clientY/innerHeight-.5});
+try{
+R=new THREE.WebGLRenderer({canvas:$('#bg'),alpha:true,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+S=new THREE.Scene();C=new THREE.PerspectiveCamera(40,1,.1,100);
+S.add(new THREE.HemisphereLight(0xffffff,0x0f766e,.95));
+dl=new THREE.DirectionalLight(0xffffff,1.15);dl.position.set(3,6,6);dl.castShadow=true;dl.shadow.mapSize.set(1024,1024);Object.assign(dl.shadow.camera,{left:-7,right:7,top:7,bottom:-7,near:1,far:30});dl.shadow.bias=-.0004;dl.shadow.radius=4;S.add(dl,dl.target);
+const pl=new THREE.PointLight(0xf59e0b,1.2,40);pl.position.set(-4,-1,5);S.add(pl);
+const M=(c,o)=>new THREE.MeshPhysicalMaterial(Object.assign({color:c,roughness:.3,metalness:.05,clearcoat:.8,clearcoatRoughness:.2},o));
+const mesh=(g,c,x,y,z,o)=>{const m=new THREE.Mesh(g,M(c,o));m.position.set(x||0,y||0,z||0);m.castShadow=m.receiveShadow=true;return m};
+const box=(w,h,d,c,x,y,z,o)=>mesh(new THREE.BoxGeometry(w,h,d),c,x,y,z,o);
+const sph=(r,c,x,y,z,o)=>mesh(new THREE.SphereGeometry(r,24,16),c,x,y,z,o);
+const cyl=(a,b,h,c,x,y,z,o)=>mesh(new THREE.CylinderGeometry(a,b,h,28),c,x,y,z,o);
+function person(cloth,hair,sc,glasses,sad){const g=new THREE.Group();
+g.add(cyl(.35,.6,1.3,cloth,0,.65,0),cyl(.37,.37,.18,0xf4a43a,0,1.18,0),sph(.34,0xf0c29a,0,1.65,0),sph(.36,hair,0,1.78,-.06),sph(.16,hair,0,2.05,-.2),
+sph(.04,0x1f2937,-.12,1.7,.31),sph(.04,0x1f2937,.12,1.7,.31),sph(.05,0xe8908a,-.21,1.6,.27,{roughness:.8}),sph(.05,0xe8908a,.21,1.6,.27,{roughness:.8}));
+const sm=new THREE.Mesh(new THREE.TorusGeometry(.07,.014,6,14,Math.PI),M(0x7f1d1d));sm.position.set(0,sad?1.52:1.57,.33);sm.rotation.z=sad?0:Math.PI;g.add(sm);
+[-1,1].forEach(s=>{const a=cyl(.09,.09,.8,cloth,s*.5,.8,0);a.rotation.z=s*.25;g.add(a,sph(.1,0xf0c29a,s*.6,.42,0))});
+if(glasses)[-1,1].forEach(s=>{const t=new THREE.Mesh(new THREE.TorusGeometry(.1,.02,8,20),M(0x111827));t.position.set(s*.13,1.7,.33);g.add(t)});
+g.scale.setScalar(sc);return g}
+function stage(i,side){const g=new THREE.Group();g.position.x=i*16;S.add(g);const c=new THREE.Group();g.add(c);
+c.add(cyl(3.4,3.6,.3,0xcdeee6,0,-2.45,0));const bd=new THREE.Mesh(new THREE.CircleGeometry(3.5,64),new THREE.MeshBasicMaterial({color:[0xfde7c3,0xcfeee8,0xfff3bf,0xd7e8ff,0xfbd5df][i],transparent:true,opacity:.55}));bd.position.set(0,.5,-2.4);c.add(bd);ST.push(g);CG.push({c,side});return c}
+const hs=new THREE.Shape();hs.moveTo(0,-.5);hs.bezierCurveTo(-.95,.1,-.5,.85,0,.35);hs.bezierCurveTo(.5,.85,.95,.1,0,-.5);
+const heart=(c,s)=>{const g=new THREE.ExtrudeGeometry(hs,{depth:.25,bevelEnabled:true,bevelSize:.07,bevelThickness:.07,bevelSegments:4});g.center();const m=mesh(g,c);m.scale.setScalar(s);return m};
+
+/* 1: Paati dizzy at home, Nalam asleep */
+let c=stage(0,1);
+c.add(box(3,.7,1.2,0x2f8f86,0,-1.95,-.6),box(3,1.1,.35,0x24786f,0,-1.45,-1.1),box(.35,.9,1.2,0x24786f,-1.5,-1.75,-.6),box(.35,.9,1.2,0x24786f,1.5,-1.75,-.6));
+let p=person(0xa8324a,0xe5e7eb,.85,false,true);p.position.set(0,-2,-.5);p.rotation.x=.18;c.add(p);
+c.add(box(1.6,1.8,.1,0xbfe9ff,-2.3,-.2,-1.6,{emissive:0x9bd7ff,emissiveIntensity:.4}),cyl(.5,.5,.5,0x8b5e34,2.7,-2.05,.4),sph(.25,0xfde68a,2.7,-1.5,.4,{emissive:0xf59e0b,emissiveIntensity:.8}));
+A.dz=new THREE.Group();A.dz.position.set(0,-.2,-.5);[0,2.1,4.2].forEach(a=>A.dz.add(sph(.08,0xf59e0b,Math.cos(a)*.6,Math.sin(a)*.1,Math.sin(a)*.6)));c.add(A.dz);
+
+/* 2: She speaks to Nalam */
+c=stage(1,-1);
+p=person(0xa8324a,0xe5e7eb,.9);p.position.set(-1.2,-2.3,0);p.rotation.y=.8;c.add(p);
+c.add(sph(.7,0xffffff,-1.9,.9,.2));c.children[c.children.length-1].scale.set(1.2,.7,.3);
+A.rings=[0,1,2].map(k=>{const t=new THREE.Mesh(new THREE.TorusGeometry(.3,.03,8,30),new THREE.MeshBasicMaterial({color:0xf59e0b,transparent:true}));t.rotation.y=Math.PI/2;t.position.y=-.4;c.add(t);return t});
+
+/* 3: The screen adapts */
+c=stage(2,1);
+A.tab=new THREE.Group();A.tab.position.y=-.4;A.tab.add(box(2.4,3.2,.18,0x0b2b2a));
+A.scr=box(2.2,3,.05,0xfaf7f2,0,0,.1);A.tab.add(A.scr);
+A.bars=[.8,.15,-.5].map(y=>{const b=box(1.6,.2,.06,0x0f766e,0,y,.15);A.tab.add(b);return b});c.add(A.tab);
+p=person(0xa8324a,0xe5e7eb,.8,true);p.position.set(-2.4,-2.3,.3);p.rotation.y=.5;c.add(p);
+
+/* 4: Family far away sees it */
+c=stage(3,-1);
+c.add(box(1.8,1.3,1.6,0xf5e6d3,-2.3,-1.65,0),box(.4,.7,.05,0x8b5e34,-2.3,-1.95,.83),box(.5,.4,.05,0xfde68a,-1.9,-1.4,.83,{emissive:0xf59e0b,emissiveIntensity:.8}));
+const roof=mesh(new THREE.ConeGeometry(1.5,.9,4),0xc2410c,-2.3,-.55,0);roof.rotation.y=Math.PI/4;c.add(roof);
+c.add(box(1.4,3.6,1.4,0x335c67,2.4,-.5,-.3));
+[-1.2,-.4,.4,1.2].forEach((y,i)=>c.add(box(.35,.3,.05,0xfde68a,2.4+(i%2?.3:-.3),y,.43,{emissive:0xfbbf24,emissiveIntensity:.7})));
+p=person(0x0f766e,0x1f2937,.7);p.position.set(1.1,-2.3,1);c.add(p);
+c.add(box(.14,.24,.03,0x5eead4,1.45,-1.15,1.2,{emissive:0x5eead4,emissiveIntensity:1}));
+A.cv=new THREE.CatmullRomCurve3([new THREE.Vector3(-2.3,.2,0),new THREE.Vector3(-.4,2,.5),new THREE.Vector3(1.45,-1,1.2)]);
+c.add(new THREE.Mesh(new THREE.TubeGeometry(A.cv,40,.03,8),new THREE.MeshBasicMaterial({color:0xf59e0b})));
+A.pulse=sph(.14,0xfde68a,0,0,0,{emissive:0xf59e0b,emissiveIntensity:1});c.add(A.pulse);
+A.chart=[.3,.5,.4,.8,.5].map((h,i)=>{const b=box(.2,h,.2,0x14b8a6,-3+i*.3,-.2+h/2,0);c.add(b);return b});
+
+/* 5: Together, relieved */
+c=stage(4,0);
+p=person(0xa8324a,0xe5e7eb,1);p.position.set(-.9,-2.3,0);p.rotation.y=.35;c.add(p);
+p=person(0x0f766e,0x1f2937,.95);p.position.set(.9,-2.3,0);p.rotation.y=-.35;c.add(p);
+A.hrt=heart(0xf43f5e,1.4);A.hrt.position.y=.5;c.add(A.hrt);
+A.lv=[0,1,2,3,4,5].map(i=>{const l=sph(.4,0x22c55e,Math.cos(i*1.05)*2.6,-.4+Math.sin(i*1.7)*.8,Math.sin(i)*.8);l.scale.set(1.5,.7,.22);c.add(l);return l});
+
+/* Nalam, the companion */
+orb=new THREE.Group();orbMat=M(0x6b8a87);orb.add(new THREE.Mesh(new THREE.SphereGeometry(1.5,48,48),orbMat));
+const wm=M(0xffffff),mk=new THREE.Group();
+mk.add(cyl(.24,.24,.55,0xffffff,0,0,0),sph(.24,0xffffff,0,.275,0),sph(.24,0xffffff,0,-.275,0),cyl(.05,.05,.25,0xffffff,0,-.65,0));
+const arc=new THREE.Mesh(new THREE.TorusGeometry(.4,.05,12,32,Math.PI),wm);arc.rotation.z=Math.PI;arc.position.y=-.05;mk.add(arc);
+mk.position.set(0,.05,1.5);mk.scale.setScalar(1.15);orb.add(mk);S.add(orb);
+function size(){R.setSize(innerWidth,innerHeight);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix()}
+addEventListener('resize',size);size();
+}catch(e){console.error(e);$('#bg').style.display='none';R=null}
+
+$$('#rail button').forEach((b,n)=>b.onclick=()=>secs[n].scrollIntoView({behavior:reduce?'auto':'smooth'}));
+function prog(){const y=scrollY+innerHeight*.5;let i=0;for(;i<secs.length-1;i++)if(y<secs[i+1].offsetTop)break;
+const a=secs[i],b=secs[i+1]||a;return [i,b===a?0:Math.min(1,Math.max(0,(y-a.offsetTop)/(b.offsetTop-a.offsetTop)))]}
+const panels=$$('.panel');
+function depth(){panels.forEach(p=>{if(reduce){p.style.transform='';p.style.opacity='';return}
+const r=p.getBoundingClientRect(),d=Math.max(-1,Math.min(1,(r.top+r.height/2-innerHeight/2)/innerHeight)),ad=Math.abs(d);
+p.style.transform='perspective(1200px) rotateX('+(-d*7)+'deg) translateZ('+(-ad*90)+'px)'+(p.dataset.tilt||'');p.style.opacity=1-Math.min(ad,1)*.4})}
+$$('.tilt').forEach(p=>{p.addEventListener('pointermove',e=>{if(reduce)return;const r=p.getBoundingClientRect();
+p.dataset.tilt=' rotateY('+((e.clientX-r.left)/r.width-.5)*6+'deg) rotateX('+(-((e.clientY-r.top)/r.height-.5))*6+'deg)'});
+p.addEventListener('pointerleave',()=>{p.dataset.tilt=''})});
+const sleep=new (window.THREE?THREE.Color:Object)(0x6b8a87);let lastCap=-1;
+function frame(ms){const t=ms*.001;
+if(R){const [i,f]=prog(),sf=f*f*(3-2*f),j=Math.min(i+1,4),wide=C.aspect>.95,hh=Math.tan(20*Math.PI/180)*9,hw=hh*C.aspect,k=reduce?1:.09;
+const ci=Math.min(4,Math.round(i+f));if(ci!==lastCap){lastCap=ci;$('#cap').innerHTML='<b>'+(ci+1)+'/5</b>'+CAP[ci];$$('#rail button').forEach((b,n)=>b.setAttribute('aria-current',n===ci))}
+CG.forEach(o=>{o.c.position.x=wide?o.side*.42*hw:0;o.c.position.y=wide?0:hh*.42;o.c.scale.setScalar(wide?1:.6)});
+const cx=(i+(j-i)*sf)*16;
+C.position.set(cx+(reduce?0:mouse.x*.9),(reduce?.3:.3-mouse.y*.5),9+(reduce?0:Math.sin(Math.PI*sf)*3));C.lookAt(cx,0,0);dl.position.set(cx+3,6,6);dl.target.position.set(cx,0,0);dl.target.updateMatrixWorld();
+const pa=ST[i].position.clone().add(CG[i].c.position),pb=ST[j].position.clone().add(CG[j].c.position);
+const oa=new THREE.Vector3(...OP[i]).multiplyScalar(CG[i].c.scale.x),ob=new THREE.Vector3(...OP[j]).multiplyScalar(CG[j].c.scale.x);
+const tp=pa.add(oa).lerp(pb.add(ob),sf);orb.position.lerp(tp,k);
+const os=(OS[i]+(OS[j]-OS[i])*sf)*(wide?1:.7),pulse=listening?1+.08*Math.sin(t*11):1+.02*Math.sin(t*1.6);
+orb.scale.setScalar(os*(reduce?1:pulse));orb.rotation.y=reduce?0:Math.sin(t*.6)*.3+mouse.x*.5;
+orbMat.color.lerp(i+f>.35?tint:sleep,.08);
+const lg=H.classList.contains('lg');A.scr.material.color.setHex(lg?0x000000:0xfaf7f2);
+A.bars.forEach((b,n)=>{b.material.color.setHex(lg?0xffe600:0x0f766e);b.scale.y+=((lg?2.2:1)-b.scale.y)*.1});
+if(!reduce){A.dz.rotation.y=t*2.2;A.tab.rotation.y=Math.sin(t*.6)*.35-.15;
+A.rings.forEach((r,n)=>{const ph=(t*.7+n/3)%1;r.position.x=-.3+ph*2.2;r.scale.setScalar(.6+ph);r.material.opacity=listening?1-ph:.25*(1-ph)});
+A.pulse.position.copy(A.cv.getPoint((t*.25)%1));
+A.hrt.scale.setScalar(1.4*(1+.08*Math.sin(t*3)));A.hrt.rotation.y=Math.sin(t*.7)*.4;
+A.lv.forEach((l,n)=>{l.position.y=-.4+Math.sin(t+n)*.5;l.rotation.z=Math.sin(t*.8+n)*.5});
+A.chart.forEach((b,n)=>{b.scale.y=1+.4*Math.sin(t*1.5+n)})}
+R.render(S,C)}
+depth();requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
